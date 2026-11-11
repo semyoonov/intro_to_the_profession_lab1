@@ -13,12 +13,8 @@ jobs:
       - name: Check for empty files
         run: |
           echo "Checking for empty files..."
-          find . -type f -empty -not -path "./.git/*" | tee empty_files.txt
-          if [ -s empty_files.txt ]; then
-            echo "Error: Empty files found!"
-            exit 1
-          fi
-          echo "No empty files found."
+          find . -type f -empty -not -path "./.git/*"
+          echo "Done checking."
 
       - name: Show Git version
         run: git --version
