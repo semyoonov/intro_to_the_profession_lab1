@@ -9,5 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Check for empty files
+        run: |
+          echo "Checking for empty files..."
+          find . -type f -empty -not -path "./.git/*"
+          echo "Done checking."
+
       - name: Show Git version
         run: git --version
