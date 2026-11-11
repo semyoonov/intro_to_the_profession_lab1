@@ -20,6 +20,4 @@ jobs:
           echo "No empty files found."
 
       - name: Show Git version
-        run: |
-          echo "Running CI on Git version:"
-          git --version
+        run: git --version
