@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check for empty files
+        run: |
+          echo "Checking for empty files..."
+          if find . -type f -empty -not -path "./.git/*" | grep -q .; then
+            echo "Error: Empty files found!"
+            exit 1
+          fi
+          echo "No empty files found."
+
+      - name: Show Git version
+        run: |
+          echo "Running CI on Git version:"
+          git --version
